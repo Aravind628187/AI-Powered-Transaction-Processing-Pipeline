@@ -1,0 +1,6 @@
+venu/
+__pycache__/
+*.pyc
+uploads/
+dump.rdb
+.env

@@ -216,3 +216,4 @@ pandas
 python-multipart
 celery
 redis
+python-dotenv
