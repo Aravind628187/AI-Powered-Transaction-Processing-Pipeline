@@ -1,0 +1,5 @@
+venu/
+__pycache__/
+*.pyc
+dump.rdb
+.git
