@@ -1,4 +1,5 @@
 import os
+import time
 import google.generativeai as genai
 from dotenv import load_dotenv
 
@@ -12,6 +13,7 @@ model = genai.GenerativeModel(
     "gemini-2.0-flash"
 )
 
+
 def generate_summary(
     total_inr,
     total_usd,
@@ -19,23 +21,49 @@ def generate_summary(
     anomaly_count
 ):
 
-    try:
+    prompt = f"""
+    Generate a JSON summary for the following transaction data.
 
-        response = model.generate_content(
-            prompt
-        )
+    Total INR Spend: {total_inr}
+    Total USD Spend: {total_usd}
 
-        return response.text
+    Top Merchants:
+    {", ".join(top_merchants)}
 
-    except Exception:
+    Anomaly Count:
+    {anomaly_count}
 
-        return f"""
-        Total INR Spend: {total_inr}
-        Total USD Spend: {total_usd}
+    Return JSON with:
+    - total_spend_inr
+    - total_spend_usd
+    - top_merchants
+    - anomaly_count
+    - narrative
+    - risk_level
+    """
 
-        Top Merchants:
-        {", ".join(top_merchants)}
+    for attempt in range(3):
 
-        Anomalies Found:
-        {anomaly_count}
-        """
+        try:
+
+            response = model.generate_content(prompt)
+
+            return response.text
+
+        except Exception as e:
+
+            print(
+                f"Attempt {attempt + 1} failed: {e}"
+            )
+
+            time.sleep(2 ** attempt)
+
+    return {
+        "total_spend_inr": total_inr,
+        "total_spend_usd": total_usd,
+        "top_merchants": top_merchants,
+        "anomaly_count": anomaly_count,
+        "narrative": "LLM summary unavailable.",
+        "risk_level": "unknown",
+        "llm_failed": True
+    }
