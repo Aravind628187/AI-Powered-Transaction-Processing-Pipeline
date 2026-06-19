@@ -308,50 +308,6 @@ http://127.0.0.1:8000/docs
 
 ---
 
-# 📸 Screenshots
-
-### CSV Upload
-
-Add screenshot here
-
-```text
-screenshots/upload.png
-```
-
-### Job Status
-
-Add screenshot here
-
-```text
-screenshots/status.png
-```
-
-### Report API
-
-Add screenshot here
-
-```text
-screenshots/report.png
-```
-
-### Results API
-
-Add screenshot here
-
-```text
-screenshots/results.png
-```
-
-### Anomaly Detection
-
-Add screenshot here
-
-```text
-screenshots/anomalies.png
-```
-
----
-
 # 📈 Sample Output
 
 ```json
