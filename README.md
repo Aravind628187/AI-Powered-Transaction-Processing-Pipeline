@@ -74,7 +74,9 @@ The AI Transaction Processing Pipeline automates the processing of financial tra
               | REST APIs        |
               +------------------+
 ```
+## 🏗️ High Level Architecture
 
+![Architecture](docs/architecture.png)
 ---
 
 # 🛠️ Tech Stack
