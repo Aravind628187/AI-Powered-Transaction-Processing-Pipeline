@@ -21,8 +21,7 @@ def detect_anomalies(df):
 
         for _, row in group.iterrows():
 
-            # Rule 1:
-            # Amount > 3x median
+          
 
             if float(row["amount"]) > median_amount * 3:
 
@@ -31,8 +30,6 @@ def detect_anomalies(df):
                     "reason": "Amount exceeds 3x median"
                 })
 
-            # Rule 2:
-            # USD transaction from domestic merchant
 
             if (
                 str(row["currency"]).upper() == "USD"
